@@ -1,8 +1,11 @@
 import asyncio
 import websockets
 
+PORT = 8765
+IP = "localhost"
+
 async def test_client():
-    uri = "ws://localhost:8080"  # Change the port if different
+    uri = f"ws://{IP}:{PORT}"
 
     async with websockets.connect(uri) as websocket:
         print("Connected to WebSocket server")
