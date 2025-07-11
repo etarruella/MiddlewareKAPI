@@ -1,0 +1,38 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "ServerEventMessage",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "ServerEvent"
+        },
+        "action": {
+            "type": "string",
+            "enum": [
+                "subscribe",
+                "unsubscribe"
+            ]
+        },
+        "event": {
+            "type": "string",
+            "enum": [
+                "ServerStartEvent",
+                "ServerStopEvent",
+                "ServerReloadEvent",
+                "ServerLoadCompleteEvent",
+                "ServerTickEvent",
+                "ServerCommandEvent",
+                "ServerBroadcastMessageEvent",
+                "ServerSaveEvent",
+                "ServerPlayerCountChangeEvent"
+            ]
+        }
+    },
+    "required": [
+        "type",
+        "action",
+        "event"
+    ],
+    "additionalProperties": false
+}

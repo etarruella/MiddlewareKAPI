@@ -1,0 +1,5 @@
+{
+    "type": "ServerEvent",
+    "action": "subscribe",
+    "event": "ServerStartEvent"
+}
