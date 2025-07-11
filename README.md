@@ -22,7 +22,7 @@ Used for subscribing, unsubscribing, and receiving player-related events.
   "type": "PlayerEvent",
   "action": "subscribe",
   "event": "PlayerHealthChangeEvent",
-  "playerId": "4f7d0c4e-3fd7-4ad7-9f7d-c97b7f089b25"
+  "playerID": "4f7d0c4e-3fd7-4ad7-9f7d-c97b7f089b25"
 }
 ```
 
