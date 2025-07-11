@@ -1,0 +1,6 @@
+{
+    "type": "PlayerEvent",
+    "action": "subscribe",
+    "event": "PlayerPositionChangeEvent",
+    "playerUUID": "0f0a7c46-bbb7-4f93-a42a-690d5e76b92f"
+}

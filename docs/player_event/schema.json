@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PlayerEventMessage",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "PlayerEvent"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "subscribe",
+        "unsubscribe"
+      ]
+    },
+    "event": {
+      "type": "string",
+      "enum": [
+        "PlayerHealthChangeEvent",
+        "PlayerMaxHealthChangeEvent",
+        "PlayerPositionChangeEvent",
+        "PlayerSaturationChangeEvent",
+        "PlayerFoodLevelChangeEvent",
+        "PlayerPotionEffectsChangeEvent",
+        "PlayerArmorChangeEvent",
+        "PlayerExperienceChangeEvent",
+        "PlayerGameModeChangeEvent",
+        "PlayerLevelChangeEvent",
+        "PlayerFlyingStatusChangeEvent",
+        "PlayerVelocityChangeEvent",
+        "PlayerSneakingStatusChangeEvent",
+        "PlayerSprintingStatusChangeEvent",
+        "PlayerExhaustionChangeEvent",
+        "PlayerAirChangeEvent",
+        "PlayerFireTicksChangeEvent",
+        "PlayerOnGroundStatusChangeEvent",
+        "PlayerOpenInventoryChangeEvent",
+        "PlayerItemInHandChangeEvent",
+        "PlayerActiveSlotChangeEvent",
+        "PlayerXpProgressChangeEvent",
+        "PlayerHungerSaturationChangeEvent",
+        "PlayerPingChangeEvent",
+        "PlayerSleepingStatusChangeEvent",
+        "PlayerCompassTargetChangeEvent",
+        "PlayerJoinEvent",
+        "PlayerQuitEvent",
+        "PlayerDeathEvent",
+        "PlayerRespawnEvent"
+      ]
+    },
+    "playerUUID": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "required": [
+    "type",
+    "action",
+    "event",
+    "playerUUID"
+  ],
+  "additionalProperties": false
+}
