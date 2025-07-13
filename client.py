@@ -1,5 +1,6 @@
 import asyncio
 import websockets
+import json
 
 PORT = 8765
 IP = "localhost"
@@ -10,10 +11,16 @@ async def test_client():
     async with websockets.connect(uri) as websocket:
         print("Connected to WebSocket server")
 
-        # Send a test message
-        await websocket.send("Hello server!")
+        subscribe_message = {
+            "type": "PlayerEvent",
+            "action": "subscribe",
+            "event": "PlayerHealthChangeEvent",
+            "playerUUID": "ab406b11-d454-462f-927d-f5b41573cd43"
+        }
 
-        # Listen for incoming messages
+        await websocket.send(json.dumps(subscribe_message))
+        print(f"Sent subscription: {json.dumps(subscribe_message, indent=2)}")
+
         try:
             async for message in websocket:
                 print(f"Received message: {message}")
