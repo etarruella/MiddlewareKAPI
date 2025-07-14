@@ -19,13 +19,13 @@ async def test_client():
         }
 
         await websocket.send(json.dumps(subscribe_message))
-        print(f"Sent subscription: {json.dumps(subscribe_message, indent=2)}")
+        print(f"CLIENT -> {json.dumps(subscribe_message, indent=2)}")
 
         try:
             async for message in websocket:
-                print(f"Received message: {message}")
+                print(f"SERVER -> {message}")
         except websockets.ConnectionClosed:
-            print("Connection closed")
+            print("[Connection closed]")
 
 if __name__ == "__main__":
     asyncio.run(test_client())
