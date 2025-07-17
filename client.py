@@ -1,16 +1,23 @@
 import asyncio
 import websockets
 import json
+from datetime import datetime
 
+# Configuración del servidor WebSocket
 PORT = 8765
 IP = "localhost"
+
+def timestamp():
+    """Genera una marca de tiempo con microsegundos."""
+    return datetime.now().strftime("[%H:%M:%S.%f]")
 
 async def test_client():
     uri = f"ws://{IP}:{PORT}"
 
     async with websockets.connect(uri) as websocket:
-        print("Connected to WebSocket server")
+        print(f"{timestamp()} Conectado al servidor WebSocket")
 
+        # Mensaje de suscripción al evento del jugador
         subscribe_message = {
             "type": "PlayerEvent",
             "action": "subscribe",
@@ -19,13 +26,14 @@ async def test_client():
         }
 
         await websocket.send(json.dumps(subscribe_message))
-        print(f"CLIENT -> {json.dumps(subscribe_message, indent=2)}")
+        print(f"{timestamp()} CLIENTE ->\n{json.dumps(subscribe_message, indent=2)}")
 
         try:
+            # Escuchar mensajes entrantes del servidor
             async for message in websocket:
-                print(f"SERVER -> {message}")
+                print(f"{timestamp()} SERVIDOR -> {json.dumps(message, indent=2)}")
         except websockets.ConnectionClosed:
-            print("[Connection closed]")
+            print(f"{timestamp()} [Conexión cerrada]")
 
 if __name__ == "__main__":
     asyncio.run(test_client())
