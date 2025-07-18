@@ -18,15 +18,25 @@ async def test_client():
         print(f"{timestamp()} Conectado al servidor WebSocket")
 
         # Mensaje de suscripción al evento del jugador
-        subscribe_message = {
+        subscribe_message_health = {
             "type": "PlayerEvent",
             "action": "subscribe",
             "event": "PlayerHealthChangeEvent",
             "playerUUID": "ab406b11-d454-462f-927d-f5b41573cd43"
         }
 
-        await websocket.send(json.dumps(subscribe_message))
-        print(f"{timestamp()} CLIENTE ->\n{json.dumps(subscribe_message, indent=2)}")
+        subscribe_message_position = {
+            "type": "PlayerEvent",
+            "action": "subscribe",
+            "event": "PlayerPositionChangeEvent",
+            "playerUUID": "ab406b11-d454-462f-927d-f5b41573cd43"
+        }
+
+        await websocket.send(json.dumps(subscribe_message_health))
+        print(f"{timestamp()} CLIENTE ->\n{json.dumps(subscribe_message_health, indent=2)}")
+
+        await websocket.send(json.dumps(subscribe_message_position))
+        print(f"{timestamp()} CLIENTE ->\n{json.dumps(subscribe_message_position, indent=2)}")
 
         try:
             # Escuchar mensajes entrantes del servidor
